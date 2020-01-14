@@ -254,5 +254,32 @@ describe('declaring variables', () => {
             expect(cost).toBe(100);
         });
     });
+    it('with union constants', () => {
+
+        type SeatType = 'aisle' | 'window' | 'middle';
+
+        const mySeat: SeatType = 'window';
+
+        // switch(mySeat) {
+        //     case ''
+        // }
+    });
+
+    it('type assertions', () => {
+        let x: any;
+
+        x = 'Tacos';
+
+        // expect(x.howlong).toBe(5);
+
+        const y = x as string;
+
+        expect(y.length).toBe(5);
+
+        // tslint:disable-next-line: no-angle-bracket-type-assertion
+        const z = <string>x;
+
+        expect((x as string).length).toBe(5);
+    });
 });
 
