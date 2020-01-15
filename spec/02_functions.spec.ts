@@ -1,3 +1,5 @@
+import { identity } from './utils';
+
 describe('functions', () => {
     describe('delcaring them', () => {
         it('has about three different ways to do it.', () => {
@@ -81,7 +83,9 @@ describe('functions', () => {
         it('the basic syntax', () => {
 
             type StringModifier = (msg: string) => string;
-            function logItOut(message: string, f: StringModifier) {
+
+            // made f have an default of identity (a mockingbird)
+            function logItOut(message: string, f: StringModifier = identity) {
                 console.log(`At ${new Date().toISOString()}: ${f(message)}`);
             }
 
@@ -92,6 +96,8 @@ describe('functions', () => {
             }
 
             logItOut('Burrito', decorate);
+
+            logItOut('Enchiladas');
         });
 
         describe('HOF that returns a function', () => {
